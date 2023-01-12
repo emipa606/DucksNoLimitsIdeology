@@ -56,3 +56,4 @@ A: Yes! You have to enable dev mode though, at which point you'll be given the o
 -  If you have the solution for a problem, please post it to the GitHub repository.
 
 
+https://steamcommunity.com/sharedfiles/filedetails/changelog/2916566114]Last updated 2023-01-12

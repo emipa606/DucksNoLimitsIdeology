@@ -1,13 +1,14 @@
-﻿using HarmonyLib;
+﻿using System.Reflection;
+using HarmonyLib;
 using Verse;
 
 namespace DucksNoIdeologyLimits;
 
 [StaticConstructorOnStartup]
-public class DucksNoIdeologyLimits
+public static class DucksNoIdeologyLimits
 {
-    public DucksNoIdeologyLimits()
+    static DucksNoIdeologyLimits()
     {
-        new Harmony("net.ducks.rimworld.mod.ducksnoideologylimits").PatchAll();
+        new Harmony("net.ducks.rimworld.mod.ducksnoideologylimits").PatchAll(Assembly.GetExecutingAssembly());
     }
 }

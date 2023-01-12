@@ -8,9 +8,14 @@ namespace DucksNoIdeologyLimits;
 [HarmonyPatch("CanAdd")]
 public class DucksNoIdeologyLimits_CanAdd
 {
-    public static bool Prefix(ref AcceptanceReport __result, IdeoFoundation __instance, ref PreceptDef precept,
+    public static void Postfix(ref AcceptanceReport __result, IdeoFoundation __instance, ref PreceptDef precept,
         ref bool checkDuplicates)
     {
+        if (__result)
+        {
+            return;
+        }
+
         var preceptsListForReading = __instance.ideo.PreceptsListForReading;
         if (precept.takeNameFrom != null)
         {
@@ -31,8 +36,7 @@ public class DucksNoIdeologyLimits_CanAdd
 
             if (!takeNameFrom)
             {
-                __result = false;
-                return false;
+                return;
             }
         }
 
@@ -50,8 +54,7 @@ public class DucksNoIdeologyLimits_CanAdd
                     continue;
                 }
 
-                __result = false;
-                return false;
+                return;
             }
 
             if (precept.issue.allowMultiplePrecepts || precept.issue != preceptToTest.def.issue)
@@ -59,11 +62,9 @@ public class DucksNoIdeologyLimits_CanAdd
                 continue;
             }
 
-            __result = false;
-            return false;
+            return;
         }
 
         __result = true;
-        return false;
     }
 }

@@ -1,4 +1,7 @@
 # Changelog for DucksNoLimitsIdeology
 
+1.4.1 - The harmony-patches did not run previously, should be fixed now
+
+
 1.4.0 - First publish
 
