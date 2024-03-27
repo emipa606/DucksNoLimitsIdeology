@@ -4,8 +4,7 @@ using Verse;
 
 namespace DucksNoIdeologyLimits;
 
-[HarmonyPatch(typeof(IdeoFoundation))]
-[HarmonyPatch("CanAdd")]
+[HarmonyPatch(typeof(IdeoFoundation), nameof(IdeoFoundation.CanAdd))]
 public class DucksNoIdeologyLimits_CanAdd
 {
     public static void Postfix(ref AcceptanceReport __result, IdeoFoundation __instance, ref PreceptDef precept,

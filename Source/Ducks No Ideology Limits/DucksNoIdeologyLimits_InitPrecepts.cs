@@ -4,8 +4,7 @@ using Verse;
 
 namespace DucksNoIdeologyLimits;
 
-[HarmonyPatch(typeof(IdeoFoundation))]
-[HarmonyPatch("InitPrecepts")]
+[HarmonyPatch(typeof(IdeoFoundation), nameof(IdeoFoundation.InitPrecepts))]
 public class DucksNoIdeologyLimits_InitPrecepts
 {
     //public static void Prefix(ref IntRange ___MemeCountRangeAbsolute, ref int ___MaxStyleCategories, ref int ___MaxRituals, ref int ___MaxMultiRoles)

@@ -3,8 +3,7 @@ using RimWorld;
 
 namespace DucksNoIdeologyLimits;
 
-[HarmonyPatch(typeof(IdeoUIUtility))]
-[HarmonyPatch("CanAddRitualPattern")]
+[HarmonyPatch(typeof(IdeoUIUtility), "CanAddRitualPattern")]
 public class DucksNoIdeologyLimits_CanAddRitualPattern
 {
     public static bool Prefix(ref bool __result)

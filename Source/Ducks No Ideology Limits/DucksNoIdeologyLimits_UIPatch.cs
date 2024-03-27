@@ -8,8 +8,7 @@ using Verse;
 
 namespace DucksNoIdeologyLimits;
 
-[HarmonyPatch(typeof(IdeoUIUtility))]
-[HarmonyPatch("DoPreceptsInt")]
+[HarmonyPatch(typeof(IdeoUIUtility), "DoPreceptsInt")]
 public static class DucksNoIdeologyLimits_UIPatch
 {
     private static readonly FieldInfo
