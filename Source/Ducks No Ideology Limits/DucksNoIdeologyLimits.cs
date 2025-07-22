@@ -13,5 +13,9 @@ public static class DucksNoIdeologyLimits
     static DucksNoIdeologyLimits()
     {
         new Harmony("net.ducks.rimworld.mod.ducksnoideologylimits").PatchAll(Assembly.GetExecutingAssembly());
+        foreach (var precept in DefDatabase<PreceptDef>.AllDefs)
+        {
+            precept.ignoreLimitsInEditMode = true;
+        }
     }
 }

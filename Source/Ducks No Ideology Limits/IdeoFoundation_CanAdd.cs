@@ -5,7 +5,7 @@ using Verse;
 namespace DucksNoIdeologyLimits;
 
 [HarmonyPatch(typeof(IdeoFoundation), nameof(IdeoFoundation.CanAdd))]
-public class DucksNoIdeologyLimits_CanAdd
+public class IdeoFoundation_CanAdd
 {
     public static void Postfix(ref AcceptanceReport __result, IdeoFoundation __instance, ref PreceptDef precept,
         ref bool checkDuplicates)
@@ -15,7 +15,7 @@ public class DucksNoIdeologyLimits_CanAdd
             return;
         }
 
-        if (DucksNoIdeologyLimitsMod.instance.Settings.OnlyPlayer && (DucksNoIdeologyLimits.CurrentFactionDef == null ||
+        if (DucksNoIdeologyLimitsMod.Instance.Settings.OnlyPlayer && (DucksNoIdeologyLimits.CurrentFactionDef == null ||
                                                                       !DucksNoIdeologyLimits.CurrentFactionDef
                                                                           .isPlayer))
         {

@@ -10,7 +10,7 @@ internal class DucksNoIdeologyLimitsMod : Mod
     /// <summary>
     ///     The instance of the settings to be read by the mod
     /// </summary>
-    public static DucksNoIdeologyLimitsMod instance;
+    public static DucksNoIdeologyLimitsMod Instance;
 
     private static string currentVersion;
 
@@ -20,7 +20,7 @@ internal class DucksNoIdeologyLimitsMod : Mod
     /// <param name="content"></param>
     public DucksNoIdeologyLimitsMod(ModContentPack content) : base(content)
     {
-        instance = this;
+        Instance = this;
         Settings = GetSettings<DucksNoIdeologyLimitsSettings>();
         currentVersion = VersionFromManifest.GetVersionFromModMetaData(content.ModMetaData);
     }
@@ -46,19 +46,19 @@ internal class DucksNoIdeologyLimitsMod : Mod
     /// <param name="rect"></param>
     public override void DoSettingsWindowContents(Rect rect)
     {
-        var listing_Standard = new Listing_Standard();
-        listing_Standard.Begin(rect);
-        listing_Standard.Gap();
-        listing_Standard.CheckboxLabeled("DNIL.OnlyPlayer".Translate(), ref Settings.OnlyPlayer,
+        var listingStandard = new Listing_Standard();
+        listingStandard.Begin(rect);
+        listingStandard.Gap();
+        listingStandard.CheckboxLabeled("DNIL.OnlyPlayer".Translate(), ref Settings.OnlyPlayer,
             "DNIL.OnlyPlayerTT".Translate());
         if (currentVersion != null)
         {
-            listing_Standard.Gap();
+            listingStandard.Gap();
             GUI.contentColor = Color.gray;
-            listing_Standard.Label("DNIL.CurrentModVersion".Translate(currentVersion));
+            listingStandard.Label("DNIL.CurrentModVersion".Translate(currentVersion));
             GUI.contentColor = Color.white;
         }
 
-        listing_Standard.End();
+        listingStandard.End();
     }
 }

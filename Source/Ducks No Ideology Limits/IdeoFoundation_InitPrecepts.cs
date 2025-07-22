@@ -5,11 +5,11 @@ using Verse;
 namespace DucksNoIdeologyLimits;
 
 [HarmonyPatch(typeof(IdeoFoundation), nameof(IdeoFoundation.InitPrecepts))]
-public class DucksNoIdeologyLimits_InitPrecepts
+public class IdeoFoundation_InitPrecepts
 {
     public static void Prefix(ref IntRange ___MemeCountRangeAbsolute, IdeoGenerationParms parms)
     {
-        if (DucksNoIdeologyLimitsMod.instance.Settings.OnlyPlayer && !parms.forFaction.isPlayer)
+        if (DucksNoIdeologyLimitsMod.Instance.Settings.OnlyPlayer && !parms.forFaction.isPlayer)
         {
             return;
         }

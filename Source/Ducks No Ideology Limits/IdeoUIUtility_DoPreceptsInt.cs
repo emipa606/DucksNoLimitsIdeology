@@ -8,7 +8,7 @@ using RimWorld;
 namespace DucksNoIdeologyLimits;
 
 [HarmonyPatch(typeof(IdeoUIUtility), "DoPreceptsInt")]
-public static class DucksNoIdeologyLimits_UIPatch
+public static class IdeoUIUtility_DoPreceptsInt
 {
     private static readonly FieldInfo
         maxCountField = AccessTools.Field(typeof(PreceptDef), nameof(PreceptDef.maxCount));
