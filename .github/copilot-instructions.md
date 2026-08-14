@@ -1,38 +1,53 @@
-# GitHub Copilot Instructions for RimWorld DucksNoIdeologyLimits Mod
+# GitHub Copilot Instructions for Ducks' No Limits - Ideology (Continued)
 
 ## Mod Overview and Purpose
+Ducks' No Limits - Ideology (Continued) is an extension of the original mod by iwishforducks which aims to liberate the players from the constraints imposed by the vanilla game regarding ideologies. This mod allows players to design their ideologies without worrying about the usual restrictions, enabling more diverse and nuanced gameplay experiences.
 
-The **DucksNoIdeologyLimits** mod for RimWorld seeks to enhance player experience by removing certain limitations imposed by the Ideology DLC. It aims to provide players with more flexibility and control over ideological components of gameplay, allowing for diverse and unrestricted playstyles.
+**Important Note:** This mod can conflict with the Vanilla Ideology Expanded. If utilizing both mods, you must use the expanded mod's settings to adjust limits.
 
 ## Key Features and Systems
-
-- **Removal of Ideology Limits**: The mod focuses on removing arbitrary restrictions related to ideologies, enabling players to add more ideological elements than the base game permits.
-- **UI Enhancements**: Streamlined user interface modifications to support enhanced ideology interaction.
-- **Customization**: Provides configurable settings to tailor the mod's impact on gameplay, directly accessible via the mod menu.
+- **Unlimited Memes:** Removes the restriction on the number of memes you can add to your ideology, though conflicting memes cannot be used together due to core game limitations.
+- **Flexible Precepts:** Players can choose any precept irrespective of their meme selections.
+- **Increased Relics:** Expands the relic cap, allowing more than the default three.
+- **Expanded Rituals:** Eliminates the restriction on rituals, permitting more than six.
+- **Specialist Flexibility:** Cap-disabled for specialists allowing multiple instances (except functional limitations on Leader roles).
 
 ## Coding Patterns and Conventions
-
-- **Class Naming**: Classes are named following PascalCase and typically precede with `DucksNoIdeologyLimits_` to denote mod-specific functionality.
-- **Method Naming**: Methods adhere to PascalCase and are descriptive of their function within the mod.
-- **Access Modifiers**: Classes are appropriately encapsulated, with most gameplay logic classes being public, whereas settings and internal functionalities are marked as internal for encapsulation.
-- **Static Classes**: Used for patching and utility functions to denote a lack of instance-specific state.
+- **C# File Structure:** The mod comprises multiple C# files, each targeting a specific aspect of the Ideology system.
+    - `IdeoFoundation_InitPrecepts.cs`: Handles initial precept settings.
+    - `IdeoUIUtility_DoPreceptsInt.cs`: Manages the precept user interface.
+    - Other files follow similar functional separations.
+- **Naming Conventions:** CamelCase is used for type and method names, following .NET standards.
+- **Comments and Documentation:** Each file should have a clear documentation header explaining its purpose and major functions.
 
 ## XML Integration
-
-Currently, there is no explicit XML integration mentioned, indicating all mod logic is handled via C# scripts. However, typical RimWorld mods may utilize XML for defining game components, so ensure any future XML integration follows clarity and modularity.
+- **About.xml:** This file is critical for specifying mod dependencies, such as `brrainz.harmony`. Ensure this file is up-to-date with any changes in dependencies or mod information.
 
 ## Harmony Patching
-
-- **Harmony Use**: The mod uses Harmony to patch existing RimWorld methods for overriding or extending their functionalities. This typically involves:
-  - Prefix and Postfix methods to inject additional logic before or after the original method logic.
-  - Transpilers if complex method replacements are necessary, although not mentioned in the current summary.
+- **Using Harmony:**
+  - All major patches utilize the Harmony library for altering existing game behavior without directly modifying the game's source code.
+  - Common patching methods like `Prefix`, `Transpiler`, and `Postfix` are utilized across files, ensuring non-invasive integration.
 
 ## Suggestions for Copilot
+When using GitHub Copilot with this project, consider the following:
+1. **Refactor Repeated Code:** Identify repetitive patterns through Copilot suggestions and refactor these using helper methods.
+2. **Generate XML Doc Comments:** Leverage Copilot to create meaningful XML documentation for classes and methods automatically.
+3. **Testing and Debugging:** Suggest techniques for debugging Harmony patches and using RimWorld's logging effectively.
+4. **Optimize Imports:** Ensure all necessary Harmony annotations and using directives are automatically generated where required.
+5. **Enhanced Compatibility:** Recommend code patterns that improve compatibility, especially when used alongside other RimWorld mods.
 
-1. **Propose Descriptive Comments**: Ensure all methods and classes have informative XML comments that describe their purpose and any dependencies.
-2. **Recommend Refactoring Opportunities**: If methods grow too large or multi-purpose, suggest refactoring into smaller utility methods or classes.
-3. **Generate Method Stubs**: Use detected naming patterns to auto-generate methods and fill in boilerplate using names from provided instructions.
-4. **Predict Test Cases**: Offer unit test cases based on existing methods to ensure expected behavior.
-5. **Codify Best Practices**: Suggest improvements or corrections following C# and Harmony best practices.
+By following these instructions and making strategic use of GitHub Copilot, development efficiency can be improved while maintaining a high standard of code quality. Enjoy expanding the realms of RimWorld's ideology system!
 
-This instructions file should aid in maintaining code cohesiveness, improving collaboration, and integrating automation tools effectively.
+## Project Solution Guidelines
+- Relevant mod XML files are included as Solution Items under the solution folder named XML, these can be read and modified from within the solution.
+- Use these in-solution XML files as the primary files for reference and modification.
+- The `.github/copilot-instructions.md` file is included in the solution under the `.github` solution folder, so it should be read/modified from within the solution instead of using paths outside the solution. Update this file once only, as it and the parent-path solution reference point to the same file in this workspace.
+- When making functional changes in this mod, ensure the documented features stay in sync with implementation; use the in-solution `.github` copy as the primary file.
+- In the solution is also a project called Assembly-CSharp, containing a read-only version of the decompiled game source, for reference and debugging purposes.
+- For any new documentation, update this copilot-instructions.md file rather than creating separate documentation files.
+
+
+## Hard rules (must follow)
+- Do NOT run commands that modify the repo (no git commit, git apply, dotnet format) unless explicitly asked.
+- Prefer minimal reads: read only the smallest code region needed (around the suspicious lines).
+

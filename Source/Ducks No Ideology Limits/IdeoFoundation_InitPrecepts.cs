@@ -5,7 +5,7 @@ using Verse;
 namespace DucksNoIdeologyLimits;
 
 [HarmonyPatch(typeof(IdeoFoundation), nameof(IdeoFoundation.InitPrecepts))]
-public class IdeoFoundation_InitPrecepts
+public static class IdeoFoundation_InitPrecepts
 {
     public static void Prefix(ref IntRange ___MemeCountRangeAbsolute, IdeoGenerationParms parms)
     {

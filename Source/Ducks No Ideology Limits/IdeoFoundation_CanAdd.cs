@@ -1,11 +1,12 @@
-﻿using HarmonyLib;
+﻿using System.Linq;
+using HarmonyLib;
 using RimWorld;
 using Verse;
 
 namespace DucksNoIdeologyLimits;
 
 [HarmonyPatch(typeof(IdeoFoundation), nameof(IdeoFoundation.CanAdd))]
-public class IdeoFoundation_CanAdd
+public static class IdeoFoundation_CanAdd
 {
     public static void Postfix(ref AcceptanceReport __result, IdeoFoundation __instance, ref PreceptDef precept,
         ref bool checkDuplicates)
@@ -46,14 +47,14 @@ public class IdeoFoundation_CanAdd
             }
         }
 
-        foreach (var preceptToTest in preceptsListForReading)
+        foreach (var preceptToTest in preceptsListForReading.Select(p => p.def))
         {
             if (!checkDuplicates)
             {
                 continue;
             }
 
-            if (precept == preceptToTest.def)
+            if (precept == preceptToTest)
             {
                 if (precept.allowDuplicates)
                 {
@@ -63,7 +64,7 @@ public class IdeoFoundation_CanAdd
                 return;
             }
 
-            if (precept.issue.allowMultiplePrecepts || precept.issue != preceptToTest.def.issue)
+            if (precept.issue.allowMultiplePrecepts || precept.issue != preceptToTest.issue)
             {
                 continue;
             }

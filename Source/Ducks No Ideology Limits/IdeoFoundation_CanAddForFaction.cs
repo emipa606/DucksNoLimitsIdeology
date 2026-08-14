@@ -4,7 +4,7 @@ using RimWorld;
 namespace DucksNoIdeologyLimits;
 
 [HarmonyPatch(typeof(IdeoFoundation), "CanAddForFaction")]
-public class IdeoFoundation_CanAddForFaction
+public static class IdeoFoundation_CanAddForFaction
 {
     public static void Prefix(FactionDef forFaction)
     {
