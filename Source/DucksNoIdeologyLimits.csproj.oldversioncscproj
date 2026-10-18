@@ -1,16 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <OutputPath>..\..\1.5\Assemblies</OutputPath>
-    <TargetFramework>net48</TargetFramework>
+    <OutputPath>..\..\1.6\Assemblies</OutputPath>
+    <TargetFramework>net481</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <DebugType>None</DebugType>
     <LangVersion>latest</LangVersion>
-    <FileVersion>1.5.0</FileVersion>
+    <FileVersion>1.6.2</FileVersion>
+    <Copyright>© iwishforducks 2026 - Creative Commons Legal Code</Copyright>
+    <Nullable>warnings</Nullable>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Rimworld.Ref">
-      <Version>1.5.4046-beta</Version>
+      <Version>*</Version>
       <ExcludeAssets>runtime</ExcludeAssets>
       <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

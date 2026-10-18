@@ -1,5 +1,8 @@
 # Changelog for DucksNoLimitsIdeology
 
+1.7.0 - Mod updated for 1.7 and passed autotests
+
+
 1.6.2 - Moral Guides and Leaders can be removed
 More than 6 precepts can be added
 

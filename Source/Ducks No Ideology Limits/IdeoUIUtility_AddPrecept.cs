@@ -9,7 +9,7 @@ namespace DucksNoIdeologyLimits;
 [HarmonyPatch(typeof(IdeoUIUtility), "AddPrecept")]
 public static class IdeoUIUtility_AddPrecept
 {
-    private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+    public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
         var codes = new List<CodeInstruction>(instructions);
 

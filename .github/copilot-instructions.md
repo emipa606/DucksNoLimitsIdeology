@@ -1,42 +1,64 @@
-# GitHub Copilot Instructions for Ducks' No Limits - Ideology (Continued)
+# Copilot Instructions: Ducks' No Limits - Ideology (Continued)
 
 ## Mod Overview and Purpose
-Ducks' No Limits - Ideology (Continued) is an extension of the original mod by iwishforducks which aims to liberate the players from the constraints imposed by the vanilla game regarding ideologies. This mod allows players to design their ideologies without worrying about the usual restrictions, enabling more diverse and nuanced gameplay experiences.
 
-**Important Note:** This mod can conflict with the Vanilla Ideology Expanded. If utilizing both mods, you must use the expanded mod's settings to adjust limits.
+**Mod Name:** Ducks' No Limits - Ideology (Continued)
+
+Ducks' No Limits - Ideology is a mod for RimWorld that removes nearly all limitations when creating your ideology within the game. It allows players to add any precept, as many memes as possible (with some exceptions), and more than the standard number of relics and rituals. This mod offers greater freedom in how players can shape their colony's ideologies, but be aware that it is highly experimental and may lead to unexpected behavior in the game. Backup your save games before using this mod.
+
+**Important Note:** If you use Vanilla Ideology Expanded, this mod will not override the limitations set by it; instead, use the settings provided by Vanilla Ideology Expanded.
 
 ## Key Features and Systems
-- **Unlimited Memes:** Removes the restriction on the number of memes you can add to your ideology, though conflicting memes cannot be used together due to core game limitations.
-- **Flexible Precepts:** Players can choose any precept irrespective of their meme selections.
-- **Increased Relics:** Expands the relic cap, allowing more than the default three.
-- **Expanded Rituals:** Eliminates the restriction on rituals, permitting more than six.
-- **Specialist Flexibility:** Cap-disabled for specialists allowing multiple instances (except functional limitations on Leader roles).
+
+- **Unlimited Memes:** Add unlimited memes to your ideology, with the exception of conflicting memes due to their inherent programming.
+  
+- **Precept Customization:** Modify your precepts freely. For instance, you can have the Transhumanist meme while rejecting body modification.
+
+- **Increased Relic Capacity:** Possess more than the typical three relics.
+
+- **Ritual Expansion:** Conduct more than the standard limit of six rituals.
+
+- **Specialist Expansion:** Assign more specialists than normally allowed.
+  - You can have multiple pawns in some roles except Leader, where only one is active at a time, and Moral Guides, where multiple active roles can coexist for different pawns.
 
 ## Coding Patterns and Conventions
-- **C# File Structure:** The mod comprises multiple C# files, each targeting a specific aspect of the Ideology system.
-    - `IdeoFoundation_InitPrecepts.cs`: Handles initial precept settings.
-    - `IdeoUIUtility_DoPreceptsInt.cs`: Manages the precept user interface.
-    - Other files follow similar functional separations.
-- **Naming Conventions:** CamelCase is used for type and method names, following .NET standards.
-- **Comments and Documentation:** Each file should have a clear documentation header explaining its purpose and major functions.
+
+- **C# Best Practices:** 
+  - Use descriptive method and variable names for clarity.
+  - Comment sections of code that handle significant changes, especially around modded behavior.
+  - Implement proper error handling where applicable to avoid crashes.
+
+- **File Organization:** 
+  - C# files containing major changes or patches are found in specific files like `IdeoUIUtility_AddPrecept.cs`, `IdeoFoundation_CanAddForFaction.cs`, and `DucksNoIdeologyLimitsMod.cs`.
+
+- **XML Structure:** 
+  - XML files contain patch definitions, e.g., `AllowRemove.xml`, utilizing proper tags and nodes.
 
 ## XML Integration
-- **About.xml:** This file is critical for specifying mod dependencies, such as `brrainz.harmony`. Ensure this file is up-to-date with any changes in dependencies or mod information.
+
+The mod uses XML files to manage definitions and patches. Key XML components include:
+
+- **Patching Mechanics:** Located in `AllowRemove.xml`, where predefined elements can be altered or added.
+- **XML Hierarchy:** Ensure XML files are aligned with RimWorld's data structure and reflect correct tagging, such as `Defs` and `Patch` nodes.
 
 ## Harmony Patching
-- **Using Harmony:**
-  - All major patches utilize the Harmony library for altering existing game behavior without directly modifying the game's source code.
-  - Common patching methods like `Prefix`, `Transpiler`, and `Postfix` are utilized across files, ensuring non-invasive integration.
+
+This mod employs Harmony to patch RimWorld's functions:
+
+- **Harmony Instances:** Initiated in `DucksNoIdeologyLimits.cs`, setting up patches for key functionality.
+- **Specific Patches:** Examples include `Transpiler` in `IdeoUIUtility_AddPrecept.cs` to modify how precepts are added.
+- **Prefix and Postfix Methods:** Used in `IdeoFoundation_CanAddForFaction.cs` to extend or adjust existing game mechanics.
 
 ## Suggestions for Copilot
-When using GitHub Copilot with this project, consider the following:
-1. **Refactor Repeated Code:** Identify repetitive patterns through Copilot suggestions and refactor these using helper methods.
-2. **Generate XML Doc Comments:** Leverage Copilot to create meaningful XML documentation for classes and methods automatically.
-3. **Testing and Debugging:** Suggest techniques for debugging Harmony patches and using RimWorld's logging effectively.
-4. **Optimize Imports:** Ensure all necessary Harmony annotations and using directives are automatically generated where required.
-5. **Enhanced Compatibility:** Recommend code patterns that improve compatibility, especially when used alongside other RimWorld mods.
 
-By following these instructions and making strategic use of GitHub Copilot, development efficiency can be improved while maintaining a high standard of code quality. Enjoy expanding the realms of RimWorld's ideology system!
+To effectively leverage GitHub Copilot within this project:
+
+- **Completion Suggestions:** Use Copilot to autocomplete frequent repetitive code patterns, especially when drafting multiple patches.
+- **Error Detection:** Leverage Copilot's suggestions for potential bug fixes and optimizations in C# code.
+- **Integration Paths:** Utilize Copilot for XML file management by suggesting template structures for new patch definitions.
+- **Harmony Guidance:** Allow Copilot to assist in the creation of Harmony prefixes, postfixes, and transpilers by proposing patterns based on similar structures in the project.
+
+By following these guidelines, you can maintain a high-quality and robust mod development experience with Ducks' No Limits - Ideology.
 
 ## Project Solution Guidelines
 - Relevant mod XML files are included as Solution Items under the solution folder named XML, these can be read and modified from within the solution.
@@ -50,4 +72,6 @@ By following these instructions and making strategic use of GitHub Copilot, deve
 ## Hard rules (must follow)
 - Do NOT run commands that modify the repo (no git commit, git apply, dotnet format) unless explicitly asked.
 - Prefer minimal reads: read only the smallest code region needed (around the suspicious lines).
+- When mentioning SonarQube issues, automatically use the SonarQube MCP service to fetch and address issues instead of making inferred fixes without querying SonarQube first.
+- When mentioning the rimworld log, automatically use the Rimworld MCP service to fetch the log.
 

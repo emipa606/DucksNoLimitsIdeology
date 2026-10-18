@@ -14,7 +14,7 @@
   <Folder Name="/XML/About/">
     <File Path="../About/about.xml" />
   </Folder>
-  <Folder Name="/XML/1.6/Patches/">
-    <File Path="../1.6/Patches/AllowRemove.xml" />
+  <Folder Name="/XML/1.7/Patches/">
+    <File Path="../1.7/Patches/AllowRemove.xml" />
   </Folder>
 </Solution>
